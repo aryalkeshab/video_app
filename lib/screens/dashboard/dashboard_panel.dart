@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:video_app/controllers/dashpanel/dashboard_panel_controller.dart';
-import 'package:video_app/controllers/home_controller.dart';
+import 'package:video_app/controllers/screen_controller/home_controller.dart';
 import 'package:video_app/screens/home/home_screen.dart';
 import 'package:video_app/screens/profile/profile_screen.dart';
 import 'package:video_app/utils/constants/colors.dart';
@@ -38,7 +38,7 @@ class DashBoardPanel extends StatelessWidget {
         controller: c.pageController,
         children: [
           HomeScreen(),
-          ProfileScreen(),
+          const ProfileScreen(),
         ],
       ),
     );

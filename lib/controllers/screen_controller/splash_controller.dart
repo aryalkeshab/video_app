@@ -10,6 +10,7 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     Timer(const Duration(seconds: 1), () {
+      //for autonavigate
       // FirebaseAuth.instance.authStateChanges().listen((User? user) {
       //   if (user != null) {
       //     // User is logged in
@@ -22,8 +23,6 @@ class SplashController extends GetxController {
       // });
 
       if (FirebaseAuth.instance.currentUser != null) {
-        // User is logged in
-        // Get.offAllNamed(HomeScreen.routeName);
         Get.offAllNamed(DashBoardPanel.routeName);
       } else {
         // User is not logged in

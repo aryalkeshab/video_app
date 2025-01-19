@@ -24,7 +24,37 @@ class HomeController extends GetxController {
     update();
   }
 
-  void handleUserComment(String newComment, String userId, String videoId) {
+  void handleUserComment(
+      String newComment, String userId, String videoId) async {
+    final newComment = commentController.text.trim();
+
+    HiveDatabaseService hiveDatabaseService = HiveDatabaseService();
+    if (newComment.isNotEmpty) {
+      // Save the comment to the database
+      String userName = await getUserName(userId);
+      hiveDatabaseService.addComment(
+        videoId,
+        VideoCommentModel(
+          userId: userId,
+          userName: userName,
+          comment: newComment,
+          date: DateTime.now().toString(),
+          videoId: videoId,
+        ),
+      );
+
+      getAllVideos(); // Refresh video list
+
+      // Handle user comment with the bot timer
+      handleBotComment(
+        newComment,
+        userId,
+        videoId,
+      );
+    }
+  }
+
+  void handleBotComment(String newComment, String userId, String videoId) {
     if (newComment.isNotEmpty) {
       commentController.clear();
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:video_app/controllers/splash_controller.dart';
+import 'package:video_app/controllers/screen_controller/splash_controller.dart';
 import 'package:video_app/utils/constants/colors.dart';
 import 'package:video_app/utils/constants/image_path.dart';
 

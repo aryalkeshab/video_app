@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:video_app/controllers/home_controller.dart';
+import 'package:video_app/controllers/screen_controller/home_controller.dart';
 import 'package:video_app/screens/home/video_widget.dart';
 import 'package:video_app/utils/constants/colors.dart';
 import 'package:video_app/utils/constants/icon_path.dart';

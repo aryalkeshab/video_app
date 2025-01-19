@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:video_app/controllers/home_controller.dart';
+import 'package:video_app/controllers/screen_controller/home_controller.dart';
 import 'package:video_app/core/hive/database_service.dart';
 import 'package:video_app/core/hive/video_model.dart';
+import 'package:video_app/screens/home/comment_popup.dart';
 
 import 'package:video_app/utils/constants/icon_path.dart';
 import 'package:video_app/utils/widgets/cache_network_image.dart';
@@ -194,144 +195,9 @@ class _VideoWidgetState extends State<VideoWidget>
                     children: [
                       GestureDetector(
                         onTap: () {
-                          final bottomSheetBackgroundColor =
-                              Theme.of(Get.context!)
-                                      .bottomSheetTheme
-                                      .backgroundColor ??
-                                  Colors.white;
                           Get.bottomSheet(
-                            Container(
-                              padding: const EdgeInsets.all(16),
-                              height:
-                                  MediaQuery.of(Get.context!).size.height / 2,
-                              width: MediaQuery.of(Get.context!).size.width,
-                              decoration: BoxDecoration(
-                                color: bottomSheetBackgroundColor,
-                                borderRadius: const BorderRadius.vertical(
-                                    top: Radius.circular(16)),
-                              ),
-                              child: Column(
-                                children: [
-                                  // Title of the bottom sheet
-                                  const Text(
-                                    "Comments",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  const SizedBox(height: 10),
-
-                                  // List of previous comments
-                                  Expanded(
-                                    child: GetBuilder<HomeController>(
-                                        builder: (controller) {
-                                      return ListView.builder(
-                                        itemCount: widget.videoModel.comments!
-                                            .length, // List of comments
-                                        itemBuilder: (context, index) {
-                                          final comment = widget
-                                              .videoModel.comments![index];
-                                          return ListTile(
-                                            contentPadding: EdgeInsets.zero,
-                                            leading: const CircleAvatar(
-                                              backgroundImage: AssetImage(
-                                                  "assets/images/placeholder.png"),
-                                            ),
-                                            title: Text(
-                                              comment.userName ??
-                                                  comment.userId ??
-                                                  "",
-                                              style: const TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                            subtitle: Text(
-                                              comment.comment.toString(),
-                                              style: const TextStyle(
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    }),
-                                  ),
-
-                                  // Divider
-                                  const Divider(
-                                      thickness: 1, color: Colors.grey),
-
-                                  // Input field for adding new comments
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: TextField(
-                                          controller: Get.find<HomeController>()
-                                              .commentController, // A controller for the input
-                                          decoration: InputDecoration(
-                                            hintText: "Write a comment...",
-                                            contentPadding:
-                                                const EdgeInsets.symmetric(
-                                                    horizontal: 16),
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(width: 8),
-                                      IconButton(
-                                        icon: const Icon(Icons.send,
-                                            color: Colors.blue),
-                                        onPressed: () async {
-                                          final homeController =
-                                              Get.find<HomeController>();
-                                          final newComment = homeController
-                                              .commentController.text
-                                              .trim();
-
-                                          HiveDatabaseService
-                                              hiveDatabaseService =
-                                              HiveDatabaseService();
-                                          if (newComment.isNotEmpty) {
-                                            // Save the comment to the database
-                                            String userName =
-                                                await homeController
-                                                    .getUserName(FirebaseAuth
-                                                        .instance
-                                                        .currentUser!
-                                                        .uid);
-                                            hiveDatabaseService.addComment(
-                                              widget.videoModel.id!,
-                                              VideoCommentModel(
-                                                userId: FirebaseAuth
-                                                    .instance.currentUser!.uid,
-                                                userName: userName,
-                                                comment: newComment,
-                                                date: DateTime.now().toString(),
-                                                videoId: widget.videoModel.id,
-                                              ),
-                                            );
-
-                                            homeController
-                                                .getAllVideos(); // Refresh video list
-
-                                            // Handle user comment with the bot timer
-                                            homeController.handleUserComment(
-                                              newComment,
-                                              FirebaseAuth
-                                                  .instance.currentUser!.uid,
-                                              widget.videoModel.id!,
-                                            );
-                                          }
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                            CommentPopup(
+                              videoModel: widget.videoModel,
                             ),
                             isScrollControlled: true,
                             enableDrag: true,

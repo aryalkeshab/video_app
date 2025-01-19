@@ -6,7 +6,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:video_app/controllers/profile/profile_controller.dart';
-import 'package:video_app/screens/profile/demo.dart';
 import 'package:video_app/utils/constants/colors.dart';
 import 'package:video_app/utils/constants/icon_path.dart';
 import 'package:video_app/utils/widgets/custom_alert_dialog.dart';
@@ -115,16 +114,6 @@ class ProfileScreen extends StatelessWidget {
                     },
                   );
                 }),
-
-              // if (!controller.isUserLoggedIn())
-              //   _buildListTile(
-              //     context,
-              //     icon: IconPath.settingLogin,
-              //     title: "Login",
-              //     onTap: () {
-              //       Get.toNamed(LoginScreen.routeName);
-              //     },
-              //   ),
             ],
           ),
         ),
