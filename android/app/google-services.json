@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "317636765228",
+    "project_id": "video-feed-app",
+    "storage_bucket": "video-feed-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317636765228:android:8a2cf3826bfbc70b84d389",
+        "android_client_info": {
+          "package_name": "com.keshab.video_feed_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317636765228-oqir0icmdc5rdvuoe28fslcgejhshl9t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRUHhCK-eJFfb0Swr-8QEhl07_sdaDxK8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317636765228-oqir0icmdc5rdvuoe28fslcgejhshl9t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,91 @@
+name: video_app
+description: "A new Flutter project."
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  get: ^4.6.6
+  get_storage: ^2.1.1
+  flutter_svg: ^2.0.9
+  cached_network_image: ^3.3.0
+  http: ^1.1.0
+  logger: ^2.0.2+1
+  intl:
+  http_parser: ^4.0.2
+  mime: ^1.0.4
+  firebase_core: ^3.10.0
+  firebase_auth: ^5.4.0
+  cloud_firestore: ^5.4.0
+  share_plus: ^7.2.1
+  shimmer: ^3.0.0
+  badges: ^3.1.2
+
+  permission_handler: ^11.0.1
+  google_sign_in: ^6.2.2
+  simple_fontellico_progress_dialog: ^0.3.0
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  video_player: 2.8.3
+  chewie: ^1.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^4.0.0
+  hive_generator:
+  build_runner:
+
+flutter:
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/videos/1_video.mp4
+    - assets/videos/2_video.mp4
+    - assets/videos/3_video.mp4
+    - assets/videos/4_video.mp4
+    - assets/videos/5_video.mp4
+    - assets/videos/6_video.mp4
+    - assets/videos/7_video.mp4
+
+    - assets/videos/
+    - assets/video_metadata.json
+
+  #   - images/a_dot_ham.jpeg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/to/resolution-aware-images
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/to/asset-from-package
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/to/font-from-package
