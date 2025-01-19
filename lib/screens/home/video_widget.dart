@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:video_app/controllers/home_controller.dart';
 import 'package:video_app/core/hive/database_service.dart';
 import 'package:video_app/core/hive/video_model.dart';
@@ -382,7 +383,9 @@ class _VideoWidgetState extends State<VideoWidget>
 
                       const SizedBox(height: 10),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () async {
+                          await Share.share(widget.videoModel.videoPath!);
+                        },
                         child: Column(
                           children: [
                             CustomShadowContainer(
